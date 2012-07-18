@@ -1,36 +1,44 @@
 <?php
 
 class sfRestDoc {
-	
+
     public function getRessources() {
-        $path = sfConfig::get("app_rest_doc_dir");
-        
-        $dir = dir($path);
+        $paths = sfConfig::get("app_rest_doc_dir");
+var_dump($paths);
         $ressource = array();
         
-        while (false !== ($file = $dir -> read())) {
-
-            if (!is_file($dir -> path . "/$file")) {
+        foreach ($paths as $path) {
+            if (!is_dir($path))
+            {
                 continue;
             }
 
-            try {
-                
-                $service = new sfRestDocService();
-                $service->loadFromXml($dir -> path . "/$file");
-                $ressource[$service->getRessource()][] = $service;
+            $dir = dir($path);
 
-            } catch(Exception $e) {
-                sfContext::getInstance()->getLogger() -> log("$file is not a valid REST Documentation file : ".$e->getMessage(), sfLogger::ALERT);
+            while (false !== ($file = $dir -> read())) {
+
+                if (!is_file($dir -> path . "/$file")) {
+                    continue;
+                }
+
+                try {
+
+                    $service = new sfRestDocService();
+                    $service -> loadFromXml($dir -> path . "/$file");
+                    $ressource[$service -> getRessource()][] = $service;
+
+                } catch(Exception $e) {
+                    sfContext::getInstance() -> getLogger() -> log("$file is not a valid REST Documentation file : " . $e -> getMessage(), sfLogger::ALERT);
+                }
             }
+    
+            $dir -> close();
         }
-        
+
         ksort($ressource);
 
-        $dir -> close();
-        
-        return $ressource;
 
+        return $ressource;
     }
 
     static public function slugify($text) {

@@ -1,9 +1,11 @@
-<?php use_javascript("../sfRestDocPlugin/js/xRegExp.js")?>
-<?php use_javascript("../sfRestDocPlugin/js/shCore.js")?>
+<?php use_stylesheet("../sfRestDocPlugin/js/sh/styles/shCore.css")?>
+<?php use_stylesheet("../sfRestDocPlugin/js/sh/styles/shThemeDefault.css")?>
+<?php use_javascript("../sfRestDocPlugin/js/sh/scripts/XRegExp.js")?>
+<?php use_javascript("../sfRestDocPlugin/js/sh/scripts/shCore.js")?>
 <?php if ($sample->getFormat() == "json"):?>
-<?php use_javascript("../sfRestDocPlugin/js/shBrushJScript.js")?>
+<?php use_javascript("../sfRestDocPlugin/js/sh/scripts/shBrushJScript.js")?>
 <?php elseif ($sample->getFormat() == "xml"):?>
-<?php use_javascript("../sfRestDocPlugin/js/shBrushXml.js")?>
+<?php use_javascript("../sfRestDocPlugin/js/sh/scripts/shBrushXml.js")?>
 <?php endif;?>
 
 <table>
@@ -22,3 +24,7 @@
 </table>
 
 <pre class="brush: <?php echo ($sample->getFormat() == "json")?"js":$sample->getFormat()?>"><?php echo $sample->getResponse()?></pre>
+
+<script type="text/javascript">
+     SyntaxHighlighter.all()
+</script>

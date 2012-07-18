@@ -1,2 +1,5 @@
 all:
-  rest_doc_dir: %SF_APP_LIB_DIR%/documentation
+  .array:
+    rest_doc_dir:
+      - %SF_APP_LIB_DIR%/documentation
+      - %SF_APP_LIB_DIR%/documentations
