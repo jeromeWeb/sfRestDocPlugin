@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="SERVICE">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="RESSOURCE" type="xs:string" />
+				<xs:element name="TITLE" type="xs:string" />
+				<xs:element name="DESCRIPTION" type="xs:string" />
+				<xs:element name="URL" type="xs:string" />
+				<xs:element name="METHOD" type="xs:string" />
+				<xs:element name="SECURITY" type="xs:boolean" />
+				<xs:element name="AVAILABLE" type="xs:boolean" />
+				<xs:element name="RESPONSE_FORMAT" type="xs:string" />
+				<xs:element name="PARAMS" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PARAM" minOccurs="1" maxOccurs="50">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="NAME" type="xs:string" />
+										<xs:element name="REQUIRED" type="xs:boolean" />
+										<xs:element name="DESCRIPTION" type="xs:string" />
+										<xs:element name="DEFAULT" type="xs:string" minOccurs="0"/>
+										<xs:element name="SAMPLE" type="xs:string" minOccurs="0"/>
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>				
+				<xs:element name="SAMPLES" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="SAMPLE" minOccurs="1" maxOccurs="50">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="URL" type="xs:string" />
+										<xs:element name="METHOD" type="xs:string" />
+										<xs:element name="DATA" type="xs:string" minOccurs="0"/>
+										<xs:element name="FORMAT">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="json" />
+													<xs:enumeration value="xml" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="RESPONSE" type="xs:string" />
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>				
+				<xs:element name="TAGS" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="TAG" minOccurs="1" maxOccurs="50" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>				
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>
