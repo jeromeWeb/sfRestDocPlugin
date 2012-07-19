@@ -4,7 +4,6 @@ class sfRestDoc {
 
     public function getRessources() {
         $paths = sfConfig::get("app_rest_doc_dir");
-var_dump($paths);
         $ressource = array();
         
         foreach ($paths as $path) {
