@@ -1,4 +1,7 @@
-    <p><?php echo __($service->getDescription()) ?></p>
+    <div class="field field-doc-url">
+        <h2><?php echo __("Description") ?></h2>
+	    <p><?php echo __($service->getDescription()) ?></p>
+    </div>
     
     <div class="field field-doc-url">
         <h2><?php echo __("URL du service") ?></h2>

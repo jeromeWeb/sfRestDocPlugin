@@ -16,12 +16,12 @@
     <tbody>
         <?php $j = 0; foreach ($services as $service): ?>
         <tr class="<?php echo $j++%2?"odd":"even"?>">
-            <td><a href="<?php echo url_for("rest_docs_plugin_show", $service->getRawValue())?>"><?php echo $service->getTitle()?></a></td>
-            <td><?php echo $service->getDescription() ?></td>
+            <td class="rest-doc-service"><a href="<?php echo url_for("rest_docs_plugin_show", $service->getRawValue())?>"><?php echo $service->getTitle()?></a></td>
+            <td class="rest-doc-description"><?php echo $service->getDescription() ?></td>
             <?php if ($service->getAvailable()):?>
-                <td><strong><?php echo __('OK')?></strong></td>
+                <td class="rest-doc-available"><strong><?php echo __('ok')?></strong></td>
             <?php else: ?>
-                <td><small><?php echo __('Brouillon')?></small></td>
+                <td class="rest-doc-available"><small><?php echo __('brouillon')?></small></td>
             <?php endif; ?>
         </tr>
         <?php endforeach; ?>
