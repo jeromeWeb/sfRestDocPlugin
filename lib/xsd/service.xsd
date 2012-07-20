@@ -12,6 +12,7 @@
 				<xs:element name="SECURITY" type="xs:boolean" />
 				<xs:element name="AVAILABLE" type="xs:boolean" />
 				<xs:element name="RESPONSE_FORMAT" type="xs:string" />
+				<xs:element name="DOCUMENTATION" type="xs:string" minOccurs="0"/>
 				<xs:element name="PARAMS" minOccurs="0">
 					<xs:complexType>
 						<xs:sequence>
@@ -38,6 +39,7 @@
 										<xs:element name="URL" type="xs:string" />
 										<xs:element name="METHOD" type="xs:string" />
 										<xs:element name="DATA" type="xs:string" minOccurs="0"/>
+										<xs:element name="STATUSCODE" type="xs:integer" />
 										<xs:element name="FORMAT">
 											<xs:simpleType>
 												<xs:restriction base="xs:string">

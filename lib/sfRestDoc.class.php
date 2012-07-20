@@ -2,7 +2,7 @@
 
 class sfRestDoc {
 
-    public function getRessources() {
+    public static function getRessources() {
         $paths = sfConfig::get("app_rest_doc_dir");
         $ressource = array();
         
@@ -24,7 +24,7 @@ class sfRestDoc {
 
                     $service = new sfRestDocService();
                     $service -> loadFromXml($dir -> path . "/$file");
-                    $ressource[$service -> getRessource()][] = $service;
+                    $ressource[$service -> getRessource()][$service->getUrl().$service->getMethod()] = $service;
 
                 } catch(Exception $e) {
                     sfContext::getInstance() -> getLogger() -> log("$file is not a valid REST Documentation file : " . $e -> getMessage(), sfLogger::ALERT);
@@ -34,8 +34,12 @@ class sfRestDoc {
             $dir -> close();
         }
 
+        foreach ($ressource as $key=>$value)
+        {
+        	ksort($ressource[$key]);
+        }
+        
         ksort($ressource);
-
 
         return $ressource;
     }

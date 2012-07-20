@@ -28,6 +28,11 @@ class sfRestDocSample
 	{
 		return (string) $this->xml->FORMAT;
 	}
+
+	public function getStatusCode()
+	{
+		return (string) $this->xml->STATUSCODE;
+	}
 	
 	public function getResponse()
 	{

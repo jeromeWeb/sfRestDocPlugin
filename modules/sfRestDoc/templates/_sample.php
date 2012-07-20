@@ -1,5 +1,5 @@
 <?php use_stylesheet("../sfRestDocPlugin/js/sh/styles/shCore.css")?>
-<?php use_stylesheet("../sfRestDocPlugin/js/sh/styles/shThemeDefault.css")?>
+<?php use_stylesheet("../sfRestDocPlugin/css/shThemeSfRestDoc.css")?>
 <?php use_javascript("../sfRestDocPlugin/js/sh/scripts/XRegExp.js")?>
 <?php use_javascript("../sfRestDocPlugin/js/sh/scripts/shCore.js")?>
 <?php if ($sample->getFormat() == "json"):?>
@@ -20,6 +20,10 @@
 			<td class="sample-request-data"><?php echo $sample->getData()?></td>
 		</tr>
 		<?php endif;?>
+		<tr>
+			<td class="sample-request-label"><?php echo __("HTTP status code")?></td>
+			<td class="sample-request-statuscode"><?php echo $sample->getStatusCode()?></td>
+		</tr>
 	</tbody>
 </table>
 

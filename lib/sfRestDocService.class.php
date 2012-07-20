@@ -81,6 +81,10 @@ class sfRestDocService {
         return (string)$this -> xml -> DESCRIPTION;
     }
 
+    public function getDocumentation() {
+        return (string)$this -> xml -> DOCUMENTATION;
+    }
+    
     public function getSecurity() {
         return ((string)$this -> xml -> SECURITY == "true") ? true : false;
     }
