@@ -2,9 +2,13 @@
 
 class sfRestDoc {
 
-    public static function getRessources() {
-        $paths = sfConfig::get("app_rest_doc_dir");
-        $ressource = array();
+    public static function getRessources($paths = null) {
+    	if ($paths === null)
+    	{
+	        $paths = sfConfig::get("app_rest_doc_dir");
+    	}
+
+    	$ressource = array();
         
         foreach ($paths as $path) {
             if (!is_dir($path))

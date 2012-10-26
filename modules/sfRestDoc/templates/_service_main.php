@@ -1,3 +1,6 @@
+<?php use_stylesheet("../sfRestDocPlugin/css/prettify.css")?>
+<?php use_javascript("../sfRestDocPlugin/js/google-code-prettify/prettify.js")?>
+
     <div class="field field-doc-url">
         <h2><?php echo __("Description") ?></h2>
 	    <p><?php echo __($service->getDescription()) ?></p>
@@ -37,4 +40,9 @@
       	<?php include_partial("sample", array("sample" => $sample))?>
         <?php endforeach;?>
     </div>
+    
+    <script type="text/javascript">
+	prettyPrint();
+	</script>
+	
     <?php endif;?>

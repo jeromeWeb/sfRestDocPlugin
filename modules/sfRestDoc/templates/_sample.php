@@ -1,6 +1,3 @@
-<?php use_stylesheet("../sfRestDocPlugin/css/prettify.css")?>
-<?php use_javascript("../sfRestDocPlugin/js/google-code-prettify/prettify.js")?>
-
 <table>
 	<tbody>
 		<tr>
@@ -21,7 +18,3 @@
 </table>
 
 <pre class="prettyprint linenums"><?php echo $sample->getResponse()?></pre>
-
-<script type="text/javascript">
-	prettyPrint();
-</script>
