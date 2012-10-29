@@ -3,6 +3,10 @@ rest_docs_plugin_index:
   url: /docs/rest
   param: { module: sfRestDoc, action: index }
 
+rest_docs_plugin_section:
+  url: /docs/:section/rest
+  param: { module: sfRestDoc, action: index }
+
 rest_docs_plugin_show:
   url: /docs/rest/:ressourceSlug/:slug
   class: sfObjectRoute

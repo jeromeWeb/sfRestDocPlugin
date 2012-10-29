@@ -2,16 +2,24 @@
 
 class sfRestDoc {
 
-    public static function getRessources($paths = null) {
-    	if ($paths === null)
-    	{
-	        $paths = sfConfig::get("app_rest_doc_dir");
-    	}
+    public static function getRessources($section = null) {
 
+    	$paths = sfConfig::get("app_rest_doc_dir");
+    	if ($section !== null)
+    	{
+    		if (!array_key_exists($section, $paths))
+    		{
+    			throw new Exception("Section $scetion doesn't exists.");
+    		}
+    		
+    		$paths = $paths[$section];
+    	}
+    	
     	$ressource = array();
         
         foreach ($paths as $path) {
-            if (!is_dir($path))
+        	
+            if (is_array($path) || !is_dir($path))
             {
                 continue;
             }
