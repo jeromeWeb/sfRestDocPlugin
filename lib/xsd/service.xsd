@@ -12,7 +12,21 @@
 				<xs:element name="SECURITY" type="xs:boolean" />
 				<xs:element name="AVAILABLE" type="xs:boolean" />
 				<xs:element name="RESPONSE_FORMAT" type="xs:string" />
-				<xs:element name="DOCUMENTATION" type="xs:string" minOccurs="0"/>
+				<xs:element name="DOCUMENTATION" minOccurs="0" type="xs:string" />
+				<xs:element name="INFOS" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="INFO" minOccurs="0">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="TITLE" type="xs:string" minOccurs="0" />
+										<xs:element name="ARTICLE" type="xs:string" minOccurs="0" />
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
 				<xs:element name="PARAMS" minOccurs="0">
 					<xs:complexType>
 						<xs:sequence>
@@ -33,25 +47,14 @@
 				<xs:element name="SAMPLES" minOccurs="0">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="SAMPLE" minOccurs="1" maxOccurs="50">
-								<xs:complexType>
-									<xs:all>
-										<xs:element name="URL" type="xs:string" />
-										<xs:element name="METHOD" type="xs:string" />
-										<xs:element name="DATA" type="xs:string" minOccurs="0"/>
-										<xs:element name="STATUSCODE" type="xs:integer" />
-										<xs:element name="FORMAT">
-											<xs:simpleType>
-												<xs:restriction base="xs:string">
-													<xs:enumeration value="json" />
-													<xs:enumeration value="xml" />
-												</xs:restriction>
-											</xs:simpleType>
-										</xs:element>
-										<xs:element name="RESPONSE" type="xs:string" />
-									</xs:all>
-								</xs:complexType>
-							</xs:element>
+							<xs:element name="SAMPLE" minOccurs="1" maxOccurs="50" type="SAMPLE" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>				
+				<xs:element name="ERRORS" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ERROR" minOccurs="1" maxOccurs="50" type="SAMPLE" />
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>				
@@ -65,5 +68,25 @@
 			</xs:all>
 		</xs:complexType>
 	</xs:element>
+
+	<xs:complexType name="SAMPLE">
+		<xs:all>
+			<xs:element name="TITLE" type="xs:string" minOccurs="0" />
+			<xs:element name="URL" type="xs:string" minOccurs="0" />
+			<xs:element name="METHOD" type="xs:string" minOccurs="0" />
+			<xs:element name="DATA" type="xs:string" minOccurs="0"/>
+			<xs:element name="STATUSCODE" type="xs:integer" />
+			<xs:element name="FORMAT">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="json" />
+						<xs:enumeration value="xml" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="RESPONSE" type="xs:string" />
+		</xs:all>
+	</xs:complexType>
+
 
 </xs:schema>

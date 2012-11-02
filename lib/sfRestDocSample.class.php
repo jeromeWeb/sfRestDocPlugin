@@ -8,6 +8,11 @@ class sfRestDocSample
 	{
 		$this->xml = $xml;
 	}
+
+	public function getTitle()
+	{
+		return (string) $this->xml->TITLE;
+	}
 	
 	public function getUrl()
 	{

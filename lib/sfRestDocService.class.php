@@ -3,9 +3,11 @@
 class sfRestDocService {
 
 	var $xml;
+	var $infos;
 	var $params;
 	var $samples;
-
+	var $errors;
+	
 	/**
 	 * Load Service Documentation from XML
 	 * @throws Exception
@@ -30,6 +32,15 @@ class sfRestDocService {
 
 		$this -> xml = simplexml_load_file($xml_path);
 
+		// hydrates infos
+		if ($this -> xml -> INFOS) {
+			foreach ($this->xml->INFOS->children() as $element) {
+				$info = new sfRestDocInfo();
+				$info -> loadFromXml($element);
+				$this -> infos[] = $info;
+			}
+		}
+		
 		// hydrates params
 		if ($this -> xml -> PARAMS) {
 			foreach ($this->xml->PARAMS->children() as $element) {
@@ -45,6 +56,15 @@ class sfRestDocService {
 				$sample = new sfRestDocSample();
 				$sample -> loadFromXml($element);
 				$this -> samples[] = $sample;
+			}
+		}
+
+		// hydrates errors
+		if ($this -> xml -> ERRORS) {
+			foreach ($this->xml->ERRORS->children() as $element) {
+				$error = new sfRestDocSample();
+				$error -> loadFromXml($element);
+				$this -> errors[] = $error;
 			}
 		}
 	}
@@ -109,6 +129,21 @@ class sfRestDocService {
 		return $this -> samples;
 	}
 
+	public function hasError() {
+		return (is_array($this -> errors)) ? true : false;
+	}
+
+	public function getErrors() {
+		return $this -> errors;
+	}
+
+	public function hasInfo() {
+		return (is_array($this -> infos)) ? true : false;
+	}
+
+	public function getInfos() {
+		return $this -> infos;
+	}	
 	/**
 	 * Transform object to array
 	 * Used by the routing to generate an url with a sfObjectRoute

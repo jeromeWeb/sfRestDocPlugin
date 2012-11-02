@@ -1,9 +1,16 @@
+<?php if ($sample->getTitle()):?>
+<h4><?php echo $sample->getTitle()?></h4>
+<?php endif;?>
+
 <table>
+	
 	<tbody>
+		<?php if ($sample->getUrl()):?>
 		<tr>
 			<td class="sample-request-label"><?php echo $sample->getMethod()?></td>
 			<td class="sample-request-url"><?php echo $sample->getUrl()?></td>
 		</tr>
+		<?php endif;?>
 		<?php if ($sample->getData()):?>
 		<tr>
 			<td class="sample-request-label"><?php echo __("%method% Data", array("%method%" => $sample->getMethod()))?></td>
