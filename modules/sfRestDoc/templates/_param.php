@@ -8,7 +8,7 @@
                             <?php  endif;?>
                         </td>
                         <td class="param-description">
-                            <p><?php  echo __($param->getRawValue()->getDescription())?></p>
+                            <p><?php  echo __($param->getRawValue()->getDescription())?><?php if ($param->getRawValue()->getDefault()):?> (valeur par défaut : <?php echo $param->getRawValue()->getDefault()?>)<?php endif;?></p>
                             <?php if ($param->getRawValue()->getSample()):?>
                             <p><strong><?php echo __("Exemple de valeur :") ?></strong> <tt><?php echo __($param->getSample())?></tt></p>
                             <?php endif;?>
