@@ -16,7 +16,7 @@
 				<xs:element name="INFOS" minOccurs="0">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="INFO" minOccurs="0">
+							<xs:element name="INFO" minOccurs="0" maxOccurs="500">
 								<xs:complexType>
 									<xs:all>
 										<xs:element name="TITLE" type="xs:string" minOccurs="0" />
