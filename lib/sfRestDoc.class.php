@@ -9,7 +9,7 @@ class sfRestDoc {
     	{
     		if (!array_key_exists($section, $paths))
     		{
-    			throw new Exception("Section $scetion doesn't exists.");
+    			throw new Exception("Section $section doesn't exists.");
     		}
     		
     		$paths = $paths[$section];
