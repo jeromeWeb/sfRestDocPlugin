@@ -64,7 +64,23 @@
 							<xs:element name="TAG" minOccurs="1" maxOccurs="50" type="xs:string" />
 						</xs:sequence>
 					</xs:complexType>
-				</xs:element>				
+				</xs:element>
+                <xs:element name="REQUEST" minOccurs="0">
+                    <xs:complexType>
+						<xs:all>
+							<xs:element name="METHOD" type="xs:string" />
+                            <xs:element name="FORMAT">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="json" />
+                                        <xs:enumeration value="xml" />
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="RESPONSE" type="xs:string" />
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
 			</xs:all>
 		</xs:complexType>
 	</xs:element>

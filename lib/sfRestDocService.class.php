@@ -7,6 +7,7 @@ class sfRestDocService {
 	var $params;
 	var $samples;
 	var $errors;
+    var $request;
 	
 	/**
 	 * Load Service Documentation from XML
@@ -66,6 +67,13 @@ class sfRestDocService {
 				$error -> loadFromXml($element);
 				$this -> errors[] = $error;
 			}
+		}
+
+        // hydrates request
+		if ($this -> xml -> REQUEST) {
+            $request = new sfRestDocSample();
+            $request -> loadFromXml($this->xml->REQUEST);
+            $this -> request = $request;
 		}
 	}
 
@@ -143,7 +151,16 @@ class sfRestDocService {
 
 	public function getInfos() {
 		return $this -> infos;
-	}	
+	}
+
+	public function hasRequest() {
+		return ($this -> xml -> REQUEST) ? true : false;
+	}
+
+	public function getRequest() {
+		return $this -> request;
+	}
+
 	/**
 	 * Transform object to array
 	 * Used by the routing to generate an url with a sfObjectRoute

@@ -26,6 +26,13 @@
     <?php endif;?>
     </div>
 
+	<?php if ($service->hasRequest()):?>
+    <div class="field field-doc-request-request">
+        <h2><?php echo __("Exemple paramètres") ?></h2>
+        <?php include_partial("request", array("request" => $service->getRequest()))?>
+    </div>
+    <?php endif;?>
+
     <?php if ($service->getDocumentation()): ?>
     <div class="field field-doc-documentation">
         <h2><?php echo __("A propos de ce service") ?></h2>
